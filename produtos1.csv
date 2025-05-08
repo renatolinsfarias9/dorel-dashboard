@@ -1,0 +1,38 @@
+﻿Cliente;SKU;Nome;Marca;Valor;Quantidade;Mês
+ClienteA;IMP02608;Plataforma com assento universal Hop-on Board Black;Maxi-Cosi;R$ 13,00;3;4
+ClienteA;IMP02521;Carrinho Bross Cinza Mescla;Cosco Kids;R$ 13,00;3;4
+ClienteA;IMP02580;Carrinho Toffy Rosa Listras;Cosco Kids;R$ 13,00;3;4
+ClienteA;CAX00937;Kit 2 Mordedores de Silicone Texturizado Verde e Azul;Infanti;R$ 13,00;3;4
+ClienteA;IMP02665;Berço Co-Bed Palace Grey;Safety 1st;R$ 13,00;3;4
+ClienteA;IMP02493;Filtro Purificador de Ar Clean 3 unidades Black;Maxi-Cosi;R$ 13,00;3;4
+ClienteA;IMP02548;Carrinho Spark Plus Grey Frost;Safety 1st;R$ 13,00;3;4
+ClienteA;CAX00878;Bebê Conforto Citi² com base Essential Black;Maxi-Cosi;R$ 13,00;3;4
+ClienteA;CAX00851;Travel System Romanzo TRIO ISOFIX Preto Granizo;Infanti;R$ 13,00;3;4
+ClienteA;CAX00901;Travel System Romanzo TRIO ISOFIX Preto Bronze;Infanti;R$ 13,00;3;4
+ClienteA;IMP02527;Carrinho Delta Azul Mescla;Voyage;R$ 13,00;3;4
+ClienteA;IMP02632;Berço Stelle Preto Noite;Infanti;R$ 13,00;3;4
+ClienteA;CAX00944;Travel System Toffy DUO Rosa Listras;Cosco Kids;R$ 13,00;3;4
+ClienteA;IMP02374;Carrinho Multiuso Wagon Blue;Safety 1st;R$ 13,00;3;4
+ClienteA;IMP01150;Carrinho Epic Lite Infanti Cherry;Infanti;R$ 13,00;3;4
+ClienteA;IMP02612;Cadeira de Refeição Panacota Branco Bronze;Infanti;R$ 13,00;3;4
+ClienteA;IMP02373;Carrinho Multiuso Wagon Grey;Safety 1st;R$ 13,00;3;4
+ClienteA;IMP02591;Berço Portátil Baru Preto Liso;Voyage;R$ 13,00;3;4
+ClienteB;CAX00931;Travel System Spark Plus TRIO ISOFIX Black Graphite;Safety 1st;R$ 13,00;3;4
+ClienteB;CAX00930;Travel System Spark Plus TRIO ISOFIX Grey Frost;Safety 1st;R$ 13,00;3;4
+ClienteB;IMP02584;Cadeirinha Nonna 360° Preto Noturno;Infanti;R$ 13,00;3;4
+ClienteB;IMP02551;Brinquedo Educativo de Encaixe Tiny Rockers Tiny Rockers;Tiny Love;R$ 13,00;3;4
+ClienteB;IMP02668;Banheira Fontana Duo Branco e Cinza;Infanti;R$ 13,00;3;4
+ClienteB;IMP02622;Babá Eletrônica Super Smart Vision White;Safety 1st;R$ 13,00;3;4
+ClienteB;CAX00961;Booster Stage Preto Eclipse;Infanti;R$ 13,00;3;4
+ClienteB;IMP02623;Grade Retrátil SafeSlide White;Safety 1st;R$ 13,00;3;4
+ClienteB;CAX00914;Bebê Conforto Beta Azul Mescla;Voyage;R$ 13,00;3;4
+ClienteB;CAX00866;Travel System Leona² TRIO com Moisés Essential Black;Maxi-Cosi;R$ 13,00;3;4
+ClienteB;IMP02636;Berço Co-bed Tori Beyond Graphite;Maxi-Cosi;R$ 13,00;3;4
+ClienteB;CAX00915;Travel System Delta DUO PRO Azul Mescla;Voyage;R$ 13,00;3;4
+ClienteB;CAX00967;Travel System Anna³ TRIO Grey;Maxi-Cosi;R$ 13,00;3;4
+ClienteB;CAX00938;Kit 2 Mordedores de Silicone Texturizado Rosa e Terracota;Infanti;R$ 13,00;3;4
+ClienteB;IMP02549;Carrinho Spark Plus Black Graphite;Safety 1st;R$ 13,00;3;4
+ClienteB;IMP02586;Babá Eletrônica Super Smart Vision White;Safety 1st;R$ 13,00;3;4
+ClienteB;CAX00960;Booster Stage Cinza Eclipse;Infanti;R$ 13,00;3;4
+ClienteB;IMP02384;Carrinho Pipa Rosa Mescla;Voyage;R$ 13,00;3;4
+ClienteB;IMP02633;Berço Portátil Happy Preto Mescla;Cosco Kids;R$ 13,00;3;4

@@ -1,0 +1,17 @@
+credentials:
+  usernames:
+    admin:
+      email: admin@example.com
+      name: Admin User
+      password: "123"  # Senha em texto puro
+      role: admin
+    ClienteA:
+      email: ClienteA@example.com
+      name: Cliente A
+      password: "123"  # Senha em texto puro
+      role: viewer
+    ClienteB:
+      email: ClienteB@example.com
+      name: Cliente B
+      password: "123"  # Senha em texto puro
+      role: viewer
