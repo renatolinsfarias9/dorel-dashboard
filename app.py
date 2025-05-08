@@ -78,6 +78,7 @@ def show_dashboard():
             # ✅ Gráfico Admin (por Marca)
             plot_bar_chart(df)
 
+            st.subheader("📋 Histórico de Pedidos")
             df_display = df.copy()
             df_display['Valor'] = df_display['Valor'].apply(lambda x: f"R$ {x:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."))
             st.dataframe(df_display)
@@ -99,6 +100,7 @@ def show_dashboard():
             # ✅ Gráfico Cliente (por Marca)
             plot_bar_chart(df_cliente)
 
+            st.subheader("📋 Histórico de Pedidos")
             df_cliente_display = df_cliente.copy()
             df_cliente_display['Valor'] = df_cliente_display['Valor'].apply(lambda x: f"R$ {x:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."))
             st.dataframe(df_cliente_display)
