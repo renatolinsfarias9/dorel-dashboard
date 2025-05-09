@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import altair as alt
 import yaml
 from yaml.loader import SafeLoader
 
@@ -22,27 +22,25 @@ if "authenticated" not in st.session_state:
     st.session_state.username = ""
     st.session_state.role = ""
 
-# ✅ Função para exibir gráfico de barras horizontal por Marca
-def plot_bar_chart(df_plot):
+# ✅ Função para exibir gráfico de barras interativo por Marca (com Altair)
+def plot_interactive_chart(df):
     st.subheader("📊 Itens Comprados por Marca")
-    marcas = df_plot.groupby('Marca')['Quantidade'].sum().sort_values()
 
-    fig, ax = plt.subplots(figsize=(10, 5))
-    bars = ax.barh(marcas.index, marcas.values, color="#4E79A7")
+    marcas = df['Marca'].unique().tolist()
+    selected_marca = st.multiselect("Selecione a Marca:", marcas, default=marcas)
 
-    for bar in bars:
-        width = bar.get_width()
-        ax.text(width + 0.2, bar.get_y() + bar.get_height() / 2,
-                f'{int(width)}', va='center', fontsize=9)
+    df_filtered = df[df['Marca'].isin(selected_marca)]
+    
+    chart = alt.Chart(df_filtered).mark_bar().encode(
+        x=alt.X('Quantidade:Q', title='Quantidade de Itens'),
+        y=alt.Y('Marca:N', sort='-x', title='Marca'),
+        color='Marca',
+        tooltip=['Marca', 'Quantidade']
+    ).interactive()
 
-    ax.set_xlabel("Quantidade")
-    ax.set_ylabel("Marca")
-    ax.set_title("Quantidade de Itens Comprados por Marca")
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
-    ax.grid(axis='x', linestyle='--', alpha=0.5)
-
-    st.pyplot(fig)
+    st.altair_chart(chart, use_container_width=True)
+    
+    return df_filtered
 
 # ✅ Função para exibir a dashboard
 def show_dashboard():
@@ -68,18 +66,22 @@ def show_dashboard():
 
         if st.session_state['role'] == 'admin':
             st.subheader("Admin Dashboard - Visualizando todos os dados")
-            total_quantidade = df['Quantidade'].sum()
-            total_valor = (df['Valor'] * df['Quantidade']).sum()
 
+            # ✅ Gráfico Interativo (por Marca)
+            df_filtered = plot_interactive_chart(df)
+
+            # ✅ Recalculando os KPIs com base na seleção
+            total_quantidade = df_filtered['Quantidade'].sum()
+            total_valor = (df_filtered['Valor'] * df_filtered['Quantidade']).sum()
+
+            # ✅ KPIs ACIMA DO GRÁFICO
+            st.subheader("📊 Indicadores Gerais")
             col1, col2 = st.columns(2)
             col1.metric("Total de Itens Comprados", f"{total_quantidade}")
             col2.metric("Valor Total", f"R$ {total_valor:,.2f}")
 
-            # ✅ Gráfico Admin (por Marca)
-            plot_bar_chart(df)
-
             st.subheader("📋 Histórico de Pedidos")
-            df_display = df.copy()
+            df_display = df_filtered.copy()
             df_display['Valor'] = df_display['Valor'].apply(lambda x: f"R$ {x:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."))
             st.dataframe(df_display)
 
@@ -88,20 +90,23 @@ def show_dashboard():
             df_cliente = df[df['Cliente'] == cliente]
             df_cliente = df_cliente.drop(columns=['Cliente'], errors='ignore')
 
-            total_quantidade = df_cliente['Quantidade'].sum()
-            total_valor = (df_cliente['Valor'] * df_cliente['Quantidade']).sum()
+            # ✅ Gráfico Interativo (por Marca)
+            df_filtered = plot_interactive_chart(df_cliente)
+
+            # ✅ Recalculando os KPIs com base na seleção
+            total_quantidade = df_filtered['Quantidade'].sum()
+            total_valor = (df_filtered['Valor'] * df_filtered['Quantidade']).sum()
 
             st.subheader(f"Dashboard do Cliente: {cliente}")
 
+            # ✅ KPIs ACIMA DO GRÁFICO
+            st.subheader("📊 Indicadores Gerais")
             col1, col2 = st.columns(2)
             col1.metric("Total de Itens Comprados", f"{total_quantidade}")
             col2.metric("Valor Total", f"R$ {total_valor:,.2f}")
 
-            # ✅ Gráfico Cliente (por Marca)
-            plot_bar_chart(df_cliente)
-
             st.subheader("📋 Histórico de Pedidos")
-            df_cliente_display = df_cliente.copy()
+            df_cliente_display = df_filtered.copy()
             df_cliente_display['Valor'] = df_cliente_display['Valor'].apply(lambda x: f"R$ {x:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."))
             st.dataframe(df_cliente_display)
 
@@ -119,7 +124,7 @@ if st.session_state.authenticated:
         st.session_state.role = ""
         st.session_state.clear()
         st.success("Você saiu com sucesso. Recarregue a página para voltar ao login.")
-        st.stop()  # Impede a exibição da dashboard após o logout
+        st.stop()
 
     show_dashboard()
 
